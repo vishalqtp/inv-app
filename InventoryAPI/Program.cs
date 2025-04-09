@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Register JwtService as a singleton
 builder.Services.AddSingleton<JwtService>();
 
+
 // Configure JWT authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -90,9 +91,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Apply migrations on startup (this is the critical line)
-app.MigrateDatabase();
-
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
@@ -113,22 +111,9 @@ app.UseAuthorization(); // Add authorization middleware
 app.UseDefaultFiles();  // Looks for default files like index.html
 app.UseStaticFiles();   // Enables serving static files (JS, CSS, etc.) from wwwroot
 
+
+
 app.MapControllers(); // Enable API controller routing
 app.MapFallbackToFile("index.html");  // If no API or static file matches the request, serve Angular's index.html (for client-side routing support)
 
 app.Run();
-
-// Extension method to apply migrations
-public static class WebApplicationExtensions
-{
-    public static IHost MigrateDatabase(this IHost webHost)
-    {
-        using (var scope = webHost.Services.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-            var context = services.GetRequiredService<InventoryDbContext>();  // Replace with your actual DbContext
-            context.Database.Migrate(); // Apply any pending migrations
-        }
-        return webHost;
-    }
-}
