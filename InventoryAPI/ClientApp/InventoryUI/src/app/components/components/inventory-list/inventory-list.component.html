@@ -1,0 +1,104 @@
+<div class="inventory-container">
+  <h1>Inventory List</h1>
+  
+  <!-- Add Item Button -->
+  <button class="add-item-btn" (click)="openModal()">Add New Item</button>
+  
+  <!-- Inventory Table -->
+  <!-- <table class="inventory-table">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Current Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inventoryItems; let i = index">
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.name" />
+          <span *ngIf="!item.isEditing">{{ item.name }}</span>
+        </td>
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.price" />
+          <span *ngIf="!item.isEditing">{{ item.price | currency }}</span>
+        </td>
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.quantity" />
+          <span *ngIf="!item.isEditing">{{ item.quantity }}</span>
+        </td>
+        <td>
+          <button *ngIf="!item.isEditing" class="edit-btn" (click)="editItem(item)">Edit</button>
+          <button *ngIf="item.isEditing" class="save-btn" (click)="saveItem(item, i)">Save</button>
+          <button *ngIf="item.isEditing" class="cancel-btn" (click)="cancelEdit(item)">Cancel</button>
+          <button class="delete-btn" (click)="deleteItem(item)">Delete</button>
+          <button class="sell-btn" (click)="sellItem(item)">Sell</button>
+          <button class="purchase-btn" (click)="purchaseItem(item)">Purchase</button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+
+  <table class="inventory-table">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Current Stock</th>
+        <th>Actions</th>
+        <th>Transactions</th> <!-- New column for Sell/Purchase -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inventoryItems; let i = index">
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.name" />
+          <span *ngIf="!item.isEditing">{{ item.name }}</span>
+        </td>
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.price" />
+          <span *ngIf="!item.isEditing">{{ item.price | currency }}</span>
+        </td>
+        <td>
+          <input *ngIf="item.isEditing" [(ngModel)]="item.quantity" />
+          <span *ngIf="!item.isEditing">{{ item.quantity }}</span>
+        </td>
+        <td class="action-buttons">
+          <button *ngIf="!item.isEditing" class="edit-btn" (click)="editItem(item)">Edit</button>
+          <button *ngIf="item.isEditing" class="save-btn" (click)="saveItem(item, i)">Save</button>
+          <button *ngIf="item.isEditing" class="cancel-btn" (click)="cancelEdit(item)">Cancel</button>
+          <button class="delete-btn" (click)="deleteItem(item.id)">Delete</button>
+        </td>
+        <td class="transaction-buttons">
+          <button class="sell-btn" (click)="sellItem(item)">Sell</button>
+          <button class="purchase-btn" (click)="purchaseItem(item)">Purchase</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- Modal for Adding New Item -->
+<div class="modal" [class.show]="isModalOpen">
+  <div class="modal-content">
+    <button class="close" (click)="closeModal()">
+      <i class="fas fa-times"></i> <!-- FontAwesome Close Icon -->
+    </button>
+    <h2>Add New Inventory Item</h2>
+    <form (submit)="addNewItem()">
+      <label for="name">Item Name:</label>
+      <input type="text" id="name" [(ngModel)]="newItem.name" name="name" required />
+      
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" [(ngModel)]="newItem.quantity" name="quantity" required />
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="newItem.price" name="price" required />
+
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+</div>
+

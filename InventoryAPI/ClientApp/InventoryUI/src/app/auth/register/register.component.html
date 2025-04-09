@@ -1,0 +1,38 @@
+<div class="register-form">
+    <h2>Register</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" />
+        <!-- Validation message for username -->
+        <div *ngIf="username?.touched && username?.invalid">
+          <small *ngIf="username?.hasError('required')">Username is required.</small>
+          <small *ngIf="username?.hasError('minlength')">Username must be at least 3 characters long.</small>
+          <small *ngIf="username?.hasError('maxlength')">Username cannot exceed 20 characters.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" />
+        <!-- Validation message for password -->
+        <div *ngIf="password?.touched && password?.invalid">
+          <small *ngIf="password?.hasError('required')">Password is required.</small>
+          <small *ngIf="password?.hasError('minlength')">Password must be at least 6 characters long.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  
+    <!-- Error and success messages -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <div *ngIf="successMessage" class="success-message">
+      <p>{{ successMessage }}</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,16 @@
+<div class="modal-content">
+    <form (submit)="addItem()">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="newItem.name" name="name" required />
+  
+      <label>Quantity:</label>
+      <input type="number" [(ngModel)]="newItem.quantity" name="quantity" required />
+  
+      <label>Price:</label>
+      <input type="number" [(ngModel)]="newItem.price" name="price" required />
+  
+      <button type="submit">Add Item</button>
+      <!-- <button type="button" (click)="close()">Cancel</button> -->
+    </form>
+  </div>
+  

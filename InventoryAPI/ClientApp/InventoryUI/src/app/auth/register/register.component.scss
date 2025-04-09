@@ -1,0 +1,123 @@
+/* Register form container */
+.register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  input:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:disabled {
+    background-color: #c1e1c1;
+    cursor: not-allowed;
+  }
+  
+  /* Error and success messages */
+  .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .register-form {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    input {
+      font-size: 16px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 14px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  small {
+    display: block;
+    color: red;
+    font-size: 12px;
+  }
+  
+  

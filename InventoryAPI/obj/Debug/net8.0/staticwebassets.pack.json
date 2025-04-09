@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/3rdpartylicenses.txt",
+      "PackagePath": "staticwebassets/3rdpartylicenses.txt"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/main.1802b03c2faae4c8.js",
+      "PackagePath": "staticwebassets/main.1802b03c2faae4c8.js"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/polyfills.3bbd24c04582c521.js",
+      "PackagePath": "staticwebassets/polyfills.3bbd24c04582c521.js"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/runtime.e452d40b36e5500a.js",
+      "PackagePath": "staticwebassets/runtime.e452d40b36e5500a.js"
+    },
+    {
+      "Id": "/Users/vishalrathore/Documents/Workspace/inventorytracker/InventoryAPI/wwwroot/styles.ef46db3751d8e999.css",
+      "PackagePath": "staticwebassets/styles.ef46db3751d8e999.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.InventoryAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.InventoryAPI.props",
+      "PackagePath": "build\\InventoryAPI.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.InventoryAPI.props",
+      "PackagePath": "buildMultiTargeting\\InventoryAPI.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.InventoryAPI.props",
+      "PackagePath": "buildTransitive\\InventoryAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,76 @@
+.home-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .home-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home-container p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .login-btn {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+  .home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 20px; /* Add space between the buttons */
+    margin-top: 20px;
+  }
+  
+  .login-btn, .register-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .login-btn {
+    background-color: #5190d3;
+    color: white;
+  }
+  
+  .register-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .login-btn:hover, .register-btn:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  .register-btn:hover {
+    background-color: #218838;
+  }
+  

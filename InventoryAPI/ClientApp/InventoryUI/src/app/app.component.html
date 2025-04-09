@@ -1,0 +1,9 @@
+<nav *ngIf="authService.isAuthenticated()">
+  <a routerLink="/inventory" routerLinkActive="active">Inventory</a>
+  <a routerLink="/add-inventory" routerLinkActive="active">Add Inventory</a>
+  <a (click)="logout()">Logout</a>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
