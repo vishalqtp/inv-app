@@ -69,6 +69,10 @@ jobs:
           slot-name: 'Production'
           package: .
 
+      # Install EF Core tools
+      - name: Install EF Core tools
+        run: dotnet tool install --global dotnet-ef
+
       # Run EF Migrations on Azure SQL Database
       - name: Run EF Migrations on Azure SQL Database
         run: |
