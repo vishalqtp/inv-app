@@ -73,11 +73,10 @@ builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IInventoryService, InventoryService>();
 
-
-// Configure database connection for SQLite
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// Latest code: Using Azure SQL Database (dark blue color)
 builder.Services.AddDbContext<InventoryDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlServer(connectionString));  // Use SqlServer for Azure SQL Database
 
 // Add CORS policy (if required)
 builder.Services.AddCors(options =>
