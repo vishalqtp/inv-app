@@ -1,3 +1,6 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Build and deploy ASP.Net Core app to Azure Web App - inventoryappv1
 
 on:
@@ -21,13 +24,13 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore dependencies
-        run: dotnet restore inventoryapi/inventoryapi.csproj
+        run: dotnet restore inventoryapi/InventoryAPI.csproj
 
       - name: Build with dotnet
-        run: dotnet build inventoryapi/inventoryapi.csproj --configuration Release
+        run: dotnet build inventoryapi/InventoryAPI.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish inventoryapi/inventoryapi.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish inventoryapi/InventoryAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -58,15 +61,6 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B4D2F77D4B5148328C481E64A82E96CE }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7B982459683B486A9C6BB59684EBCD6D }}
 
-      # Install EF Core CLI tools
-      - name: Install EF Core CLI tools
-        run: dotnet tool install --global dotnet-ef
-
-      # Apply EF Core migrations to Azure SQL Database
-      - name: Run EF Core Migrations
-        run: |
-          dotnet ef database update --project inventoryapi/inventoryapi.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -74,3 +68,8 @@ jobs:
           app-name: 'inventoryappv1'
           slot-name: 'Production'
           package: .
+
+      # Run EF Migrations on Azure SQL Database
+      - name: Run EF Migrations on Azure SQL Database
+        run: |
+          dotnet ef database update --project inventoryapi/InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
