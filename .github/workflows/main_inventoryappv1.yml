@@ -75,6 +75,4 @@ jobs:
 
       # Run EF Migrations on Azure SQL Database
       - name: Run EF Migrations on Azure SQL Database
-        run: |
-          cd InventoryAPI  # Change the working directory to InventoryAPI
-          dotnet ef database update --project InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
+        run: dotnet ef database update --project InventoryAPI/InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
