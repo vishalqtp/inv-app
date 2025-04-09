@@ -24,13 +24,13 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore dependencies
-        run: dotnet restore inventoryapi/InventoryAPI.csproj
+        run: dotnet restore InventoryAPI/InventoryAPI.csproj
 
       - name: Build with dotnet
-        run: dotnet build inventoryapi/InventoryAPI.csproj --configuration Release
+        run: dotnet build InventoryAPI/InventoryAPI.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish inventoryapi/InventoryAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish InventoryAPI/InventoryAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -76,4 +76,5 @@ jobs:
       # Run EF Migrations on Azure SQL Database
       - name: Run EF Migrations on Azure SQL Database
         run: |
-          dotnet ef database update --project inventoryapi/InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
+          cd InventoryAPI  # Change the working directory to InventoryAPI
+          dotnet ef database update --project InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
