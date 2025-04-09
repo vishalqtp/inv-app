@@ -58,6 +58,15 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B4D2F77D4B5148328C481E64A82E96CE }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7B982459683B486A9C6BB59684EBCD6D }}
 
+      # Install EF Core CLI tools
+      - name: Install EF Core CLI tools
+        run: dotnet tool install --global dotnet-ef
+
+      # Apply EF Core migrations to Azure SQL Database
+      - name: Run EF Core Migrations
+        run: |
+          dotnet ef database update --project inventoryapi/inventoryapi.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -65,10 +74,3 @@ jobs:
           app-name: 'inventoryappv1'
           slot-name: 'Production'
           package: .
-
-      # Step to apply EF migrations
-      - name: Apply EF migrations to Azure SQL Database
-        run: |
-          dotnet ef database update --connection-string "$ConnectionStrings__DefaultConnection"
-        env:
-          ConnectionStrings__DefaultConnection: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}  # Replace with the connection string secret
