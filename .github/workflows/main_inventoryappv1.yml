@@ -68,10 +68,13 @@ jobs:
 
       # Install EF Core tools
       - name: Install EF Core tools
-        run: dotnet tool install --global dotnet-ef
+        run: |
+          dotnet tool install --global dotnet-ef
+          dotnet tool restore
+        working-directory: InventoryAPI
 
       # Run EF Migrations on Azure SQL Database
       - name: Run EF Migrations on Azure SQL Database
         run: |
-          # Use absolute path to project to avoid path issues
-          dotnet ef database update --project ${{ github.workspace }}/InventoryAPI/InventoryAPI.csproj --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
+          dotnet ef database update --configuration Release --no-build --connection "$ConnectionStrings__DefaultConnection"
+        working-directory: InventoryAPI
